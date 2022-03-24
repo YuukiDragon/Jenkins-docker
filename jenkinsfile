@@ -6,11 +6,11 @@ node {
     }
 
     stage('Build') {
-        app = docker.build("atos06/ipiformation")
+        app = docker.build("yuukidragon/serveurweb")
     }
 
     stage('Test') {
-        docker.image('atos06/ipiformation').withRun('--rm -p 80:80 --name devops') { c ->
+        docker.image('yuukidragon/serveurweb').withRun('--rm -p 80:80 --name devops') { c ->
         sh 'docker ps'
         sh 'docker exec devops curl localhost:80'
         sh 'echo "Tests passed"'
